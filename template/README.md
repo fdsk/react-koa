@@ -1,6 +1,6 @@
 # Build Setup
 
->Ensure your node version used >= 7.6.0
+>Koa 2 requires node v7.6.0 or higher for ES2015 and async function support.
 
 ```
 # install dependencies
