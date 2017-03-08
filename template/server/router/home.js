@@ -6,19 +6,19 @@
 
 let env = process.env.NODE_ENV || 'development';
 
-let renderOnline = function*(projectName, bundleUrl,title, tpl) {
+let renderOnline = async function (projectName, bundleUrl,title, tpl) {
 
-    this.body = yield this.render(tpl, {
+    this.body = await this.render(tpl, {
         scripts:['/dist/vendor.js',bundleUrl],
         styles: ['/dist/styles'],
         title: title
     });
 };
 
-let renderPage = function*(projectName, bundleUrl, title, tpl) {
+let renderPage = async function (projectName, bundleUrl, title, tpl) {
     tpl = tpl || 'index';
     if (env === 'development') {
-        this.body = yield this.render(tpl, {
+        this.body = await this.render(tpl, {
             scripts: [
                 'http://127.0.0.1:3000/dist/vendor.js',
                 `http://127.0.0.1:3000${bundleUrl}`
@@ -27,12 +27,12 @@ let renderPage = function*(projectName, bundleUrl, title, tpl) {
             title: title
         });
     } else {
-        yield renderOnline.call(this, projectName, bundleUrl,title, tpl);
+        await renderOnline.call(this, projectName, bundleUrl,title, tpl);
     }
 };
 
-let index = function*() {
-    yield renderPage.call(this, '{{name}}', '/dist/app.js', '{{name}}','index');
+let index = async function (ctx,next) {
+    await renderPage.call(ctx, '{{name}}', '/dist/app.js', '{{name}}','index');
 };
 
 module.exports.register = function (router) {
