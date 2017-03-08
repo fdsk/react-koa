@@ -11,40 +11,38 @@ let vendor = ['react','react-dom'];
 
 module.exports = {
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.(png|jpg|gif|jpeg)$/,
-                loader: 'url',
-                query: {
-                    limit: 10000,
-                    name: '[name].[ext]?[hash]'
-                }
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 10000,
+                        name: '[name].[ext]?[hash]'
+                    }
+                }], // use: [{loader:'url-loader'}],its alias is loader
             },
             {
                 test: /\.(swf|eot|svg|ttf|woff|svg)$/,
-                loader: "file"
+                use: ["file-loader"]
             }
         ]
     },
     resolve:{
-        extensions:["",".js",".jsx"],
-        fallback: [path.join(__dirname, '../node_modules')],
+        extensions:[".js",".jsx"],
+        modules: [path.join(__dirname, '../node_modules')],
         alias:{
             '@client': path.resolve(__dirname, '../client'),
             '@components': path.resolve(__dirname, '../client/components')
         }
     },
     resolveLoader: {
-        fallback: [path.join(__dirname, '../node_modules')]
+        modules: [path.join(__dirname, '../node_modules')]
     },
-    postcss: () => {
-        return [
-            require('precss'),
-            require('autoprefixer')({ browsers: ['last 5 versions','Android >= 4.0', 'iOS >= 7'] })
-        ];
+    performance: {
+        hints: false
     },
     plugins:[
-        new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name:"vendor",
             filename:"vendor.js"

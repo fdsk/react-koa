@@ -12,34 +12,46 @@ let ExtractTextPlugin = require("extract-text-webpack-plugin");
 let prodConfig = require('./webpack.base.config');
 let config = require('../config');
 let projectRoot = path.resolve(__dirname, '../');
-let ReplaceAssets = require('./replaceAssets');
 
-prodConfig.module.loaders.unshift({
+prodConfig.module.rules.unshift({
     test: /\.jsx?$/,
     exclude: /node_modules/,
     include: [
         path.join(projectRoot, 'client')
     ],
-    loader: 'babel'
+    use: [{loader:'babel-loader'}]
 },{
     test:/\.css$/,
-    loader:ExtractTextPlugin.extract('style','css!postcss?sourceMap')
+    use: ExtractTextPlugin.extract({
+        fallback: "style-loader",
+        use: ["css-loader",{
+            loader: 'postcss-loader',
+            options:{
+                plugins: [
+                    require('precss'),
+                    require('autoprefixer')({ browsers: ['last 5 versions','Android >= 4.0', 'iOS >= 7'] })
+                ],
+                sourceMap: "inline"
+            }
+        }]
+    })
 });
 
 prodConfig.plugins = (prodConfig.plugins || []).concat([
-    new ReplaceAssets(),
     new ExtractTextPlugin("styles.css"),
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
         'process.env': config.build.env
     }),
+    new webpack.LoaderOptionsPlugin({
+        minimize: true,
+        debug: false
+    }),
     new webpack.optimize.UglifyJsPlugin({
         compress: {
             warnings: false
         },
-        output: {
-            comments: false
-        },
+        comments: false,
         sourceMap: true,
         mangle: true
     })
@@ -55,5 +67,5 @@ module.exports = Object.assign({},prodConfig,{
         publicPath: config.build.assetsPublicPath,
         sourceMapFilename: '[file].map'
     },
-    devtool:'#source-map'
+    devtool:'source-map'
 });

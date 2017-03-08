@@ -11,16 +11,24 @@ let devConfig = require('./webpack.base.config');
 let config = require('../config');
 let projectRoot = path.resolve(__dirname, '../');
 
-devConfig.module.loaders.unshift({
+devConfig.module.rules.unshift({
     test: /\.jsx?$/,
     exclude: /node_modules/,
     include: [
         path.join(projectRoot, 'client')
     ],
-    loader: 'react-hot!babel'
+    use: ['react-hot-loader','babel-loader']
 },{
     test:/\.css$/,
-    loader: 'style!css!postcss'
+    use: ['style-loader','css-loader',{
+        loader: 'postcss-loader',
+        options:{
+            plugins: [
+                require('precss'),
+                require('autoprefixer')({ browsers: ['last 5 versions','Android >= 4.0', 'iOS >= 7'] })
+            ]
+        }
+    }]
 });
 
 devConfig.plugins = (devConfig.plugins || []).concat([
@@ -28,20 +36,18 @@ devConfig.plugins = (devConfig.plugins || []).concat([
     new webpack.DefinePlugin({
         'process.env': config.dev.env
     }),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
 ]);
 
 // see https://webpack.github.io/docs/webpack-dev-server.html
 devConfig.devServer = {
     hot: true,
     noInfo: false,
-    quite: false,
-    port: config.dev.port,
-    debug:true,
+    quiet: false,
+    port: config.dev.clientPort,
     inline: true,
-    progress: true,
+    compress: true,
     historyApiFallback: true,
-    colors: true,
     stats: 'normal',
     contentBase: '../public',
     publicPath: config.dev.assetsPublicPath
@@ -61,6 +67,5 @@ module.exports = Object.assign({},devConfig,{
         publicPath: config.dev.assetsPublicPath,
         sourceMapFilename: '[file].map'
     },
-    devtool:'#cheap-module-eval-source-map',
-    debug: true
+    devtool:'cheap-module-eval-source-map'
 });
