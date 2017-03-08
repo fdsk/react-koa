@@ -17,7 +17,7 @@ module.exports =  {
     build:{
         env: require('./prod.env.js'),
         assetsRoot: path.resolve(__dirname, '../public/dist'),
-        assetsPublicPath: '/',
+        assetsPublicPath: path.resolve(__dirname, '/dist'),
         serverPort: 9003
     }
 };
