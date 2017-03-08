@@ -28,7 +28,7 @@ export  default  class Hello extends Component{
         return (
             <div className="desc">
                 <p>{this.props.desc}</p>
-                <img src='/assets/logo.png' alt="logo"/>
+                <img src='/images/logo.png' alt="logo"/>
                 {{#router}}
                 <Link to="/info">查看项目信息</Link>
                 {{/router}}

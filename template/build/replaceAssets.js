@@ -18,7 +18,7 @@ function ReplaceAssert(options) {
 
 ReplaceAssert.prototype.apply = compiler => {
     compiler.plugin('emit', (compilation, callback) => {
-        let reg = /\/assets\/(.*?\.(png|jpg|jpeg|gif|swf|eot|svg|ttf|woff|svg))/ig;
+        let reg = /\/images\/(.*?\.(png|jpg|jpeg|gif|swf|eot|svg|ttf|woff|svg))/ig;
         let assetKeys = Object.keys(compilation.assets);
 
         let manifest = {};
