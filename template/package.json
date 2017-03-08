@@ -13,7 +13,7 @@
     },
     "dependencies": {
       "react": "^15.3.2",
-      "react-dom": "^15.3.2"{{#router}},
+      "react-dom": "^15.3.2",{{#router}}
       "react-router": "^3.0.2",{{/router}}
       "babel-polyfill": "^6.23.0",
       "koa": "^2.0.0",
