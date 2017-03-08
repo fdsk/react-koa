@@ -10,7 +10,7 @@ let renderOnline = async function (projectName, bundleUrl,title, tpl) {
 
     this.body = await this.render(tpl, {
         scripts:['/dist/vendor.js',bundleUrl],
-        styles: ['/dist/styles'],
+        styles: ['/dist/styles.css'],
         title: title
     });
 };
@@ -23,7 +23,7 @@ let renderPage = async function (projectName, bundleUrl, title, tpl) {
                 'http://127.0.0.1:3000/dist/vendor.js',
                 `http://127.0.0.1:3000${bundleUrl}`
             ],
-            styles: ['/dist/styles'],
+            styles: [],
             title: title
         });
     } else {
