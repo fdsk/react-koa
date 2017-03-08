@@ -8,7 +8,7 @@
       "gulp:dev": "cross-env NODE_ENV=development ./node_modules/.bin/gulp --gulpfile ./client/gulpfile.js dev",
       "clean": "cross-env NODE_ENV=development ./node_modules/.bin/gulp --gulpfile ./client/gulpfile.js clean",
       "prod": "cross-env NODE_ENV=production node --harmony ./server/index",
-      "build": "npm run clean && cross-env NODE_ENV=production ./node_modules/.bin/gulp --gulpfile ./client/gulpfile.build.js build"{{#test}},
+      "build": "cross-env NODE_ENV=production ./node_modules/.bin/gulp --gulpfile ./client/gulpfile.build.js build"{{#test}},
       "test": "jest"{{/test}}
     },
     "dependencies": {
