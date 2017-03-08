@@ -17,7 +17,7 @@ prodConfig.module.loaders.unshift({
     test: /\.jsx?$/,
     exclude: /node_modules/,
     include: [
-        path.join(projectRoot, 'src')
+        path.join(projectRoot, 'client')
     ],
     loader: 'babel'
 },{
@@ -45,7 +45,7 @@ prodConfig.plugins = (prodConfig.plugins || []).concat([
 
 module.exports = Object.assign({},prodConfig,{
     entry: {
-        app:[path.resolve(__dirname, '../src/index.js')]
+        app:[path.resolve(__dirname, '../client/page/index.js')]
     },
     output: {
         filename: '[name].js',

@@ -6,7 +6,6 @@
 
 let path = require('path');
 let webpack = require('webpack');
-let HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let vendor = ['react','react-dom'];
 let ReplaceAssets = require('./replaceAssets');
@@ -32,8 +31,8 @@ module.exports = {
         extensions:["",".js",".jsx"],
         fallback: [path.join(__dirname, '../node_modules')],
         alias:{
-            '@src': path.resolve(__dirname, '../src'),
-            '@components': path.resolve(__dirname, '../src/components')
+            '@client': path.resolve(__dirname, '../client'),
+            '@components': path.resolve(__dirname, '../client/components')
         }
     },
     resolveLoader: {
@@ -51,13 +50,6 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name:"vendor",
             filename:"vendor.js"
-        }),
-
-        // https://github.com/ampedandwired/html-webpack-plugin
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: 'index.html',
-            inject: true
         })
     ]
 };

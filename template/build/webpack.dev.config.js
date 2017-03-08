@@ -15,7 +15,7 @@ devConfig.module.loaders.unshift({
     test: /\.jsx?$/,
     exclude: /node_modules/,
     include: [
-        path.join(projectRoot, 'src')
+        path.join(projectRoot, 'client')
     ],
     loader: 'react-hot!babel'
 },{
@@ -52,7 +52,7 @@ module.exports = Object.assign({},devConfig,{
         app:[
             "webpack/hot/dev-server",
             `webpack-dev-server/client?http://localhost:${config.dev.port}/`,
-            path.resolve(__dirname, '../src/index.js')
+            path.resolve(__dirname, '../client/page/index.js')
         ]
     },
     output: {
