@@ -21,7 +21,7 @@ export  default  class Hello extends Component{
     };
 
     static defaultProps = {
-        desc: 'A simple template webpack + react setup for projects'
+        desc: 'A simple template webpack 2 + react 15 + Koa 2 setup for projects'
     };
 
     render(){
