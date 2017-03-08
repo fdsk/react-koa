@@ -28,9 +28,10 @@ export  default  class Hello extends Component{
         return (
             <div className="desc">
                 <p>{this.props.desc}</p>
-                <img src='/images/logo.png' alt="logo"/>
+                <p><img src='/images/logo.png' alt="logo"/></p>
+                <p>doc: <a href="https://github.com/dwqs/react-koa">react-koa</a></p>
                 {{#router}}
-                <Link to="/info">查看项目信息</Link>
+                <p><Link to="/info">查看项目信息</Link></p>
                 {{/router}}
             </div>
         )

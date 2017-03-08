@@ -1,3 +1,12 @@
 .desc{
-    color: blue
+    color: blue;
+}
+
+p{
+    margin: 20px;
+}
+
+a{
+    color: red;
+    text-decoration: none;
 }
