@@ -1,4 +1,4 @@
-# react-node
+# react-koa
 A simple template Webpack 2 + React 15 + Koa 2 setup for projects.
 
 # Usage
