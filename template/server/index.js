@@ -9,23 +9,27 @@ let compress = require('koa-compress');
 let logger = require('koa-logger');
 let serve = require('koa-static');
 let koa = require('koa');
-let koaJson = require('koa-json');
+let json = require('koa-json');
 let bodyParser = require('koa-bodyparser');
+let co = require('co');
 let render = require('koa-swig');
 
+let config = require('../config/index');
+let port = process.env.NODE_ENV != 'production' ? config.dev.serverPort : config.build.serverPort;
 let controller = require('./router');
 
 let app = koa();
 
-app.context.render = render({
+app.context.render = co.wrap(render({
     root: path.resolve(__dirname, './views'),
     autoescape: true,
     cache: process.env.NODE_ENV != 'production' ? false : 'memory',
-    ext: 'html'
-});
+    ext: 'html',
+    writeBody: false
+}));
 
 app.use(bodyParser());
-app.use(koaJson());
+app.use(json());
 // Serve static files
 app.use(serve(path.resolve(__dirname, '../public')));
 // Compress
@@ -35,6 +39,6 @@ app.use(logger());
 
 controller.register(app);
 
-app.listen('9002','127.0.0.1',  () => {
-    console.log(process.env.NODE_ENV,'listening on port 9002...');
+app.listen(`${port}`,'127.0.0.1',  () => {
+    console.log(process.env.NODE_ENV,`listening on port ${port}...`);
 });
