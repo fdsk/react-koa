@@ -12,6 +12,7 @@ let ExtractTextPlugin = require("extract-text-webpack-plugin");
 let prodConfig = require('./webpack.base.config');
 let config = require('../config');
 let projectRoot = path.resolve(__dirname, '../');
+let ReplaceAssert = require('./replaceAssets');
 
 prodConfig.module.rules.unshift({
     test: /\.jsx?$/,
@@ -38,6 +39,7 @@ prodConfig.module.rules.unshift({
 });
 
 prodConfig.plugins = (prodConfig.plugins || []).concat([
+    new ReplaceAssert(),
     new ExtractTextPlugin("styles.css"),
     new webpack.DefinePlugin({
         'process.env': config.build.env
