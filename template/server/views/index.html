@@ -1,11 +1,11 @@
 {% extends './layout.html' %}
 {% block title %}
-{{title}}
+\{{title}}
 {% endblock %}
 
 {% block css %}
 {% for item in styles %}
-<link type="text/css" rel="stylesheet" href="{{item}}" />
+<link type="text/css" rel="stylesheet" href="\{{item}}" />
 {% endfor %}
 {% endblock %}
 
@@ -14,6 +14,6 @@
 
 {% block script %}
 {% for item in scripts %}
-<script type="application/javascript" src="{{item}}"></script>
+<script type="application/javascript" src="\{{item}}"></script>
 {% endfor %}
 {% endblock %}

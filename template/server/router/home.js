@@ -32,7 +32,7 @@ let renderPage = function*(projectName, bundleUrl, title, tpl) {
 };
 
 let index = function*() {
-    yield renderPage.call(this, 'react-kao', '/dist/app.js', 'react-kao','index');
+    yield renderPage.call(this, '{{name}}', '/dist/app.js', '{{name}}','index');
 };
 
 module.exports.register = function (router) {
