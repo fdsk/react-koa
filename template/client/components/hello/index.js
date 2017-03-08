@@ -7,6 +7,9 @@
 import './index.css';
 
 import React, {Component,PropTypes} from 'react';
+{{#router}}
+import { Link} from 'react-router';
+{{/router}}
 
 export  default  class Hello extends Component{
     constructor (){
@@ -26,6 +29,9 @@ export  default  class Hello extends Component{
             <div className="desc">
                 <p>{this.props.desc}</p>
                 <img src='/assets/logo.png' alt="logo"/>
+                {{#router}}
+                <Link to="/info">查看项目信息</Link>
+                {{/router}}
             </div>
         )
     }
