@@ -40,7 +40,7 @@ gulp.task('dev', ['assets'], () => {
     let compiler = webpack(webpackDevConfig);
     let server = new WebpackDevServer(compiler, webpackDevConfig.devServer);
 
-    server.listen(config.dev.port, 'localhost', function(err) {
+    server.listen(config.dev.clientPort, 'localhost', function(err) {
         if(err) {
             throw new gutil.PluginError('[webpack-dev-server err]', err)
         }
