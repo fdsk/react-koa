@@ -20,12 +20,12 @@ let url = `http://localhost:${config.dev.serverPort}`;
 let browserIsOpen = false;
 
 gulp.task('assets', () =>
-    gulp.src(['./images/**/*'], {base: '../client'})
+    gulp.src(['./images/**/*'], {base: './'})
         .pipe(gulp.dest('../public/dist'))
         .pipe(rev())
         .pipe(gulp.dest('../public/dist'))
         .pipe(rev.manifest('manifest.json',{
-            base: '../',
+            base: './',
             merge: true  // merge with the existing manifest if one exists
         }))
         .pipe(gulp.dest('../public/dist'))

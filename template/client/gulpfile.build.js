@@ -18,12 +18,12 @@ let env = process.env.NODE_ENV || 'production';
 console.log(chalk.cyan('   building for production...\n'));
 
 gulp.task('assets',['clean'], () =>
-    gulp.src(['./images/**/*'], {base: '../client'})
+    gulp.src(['./images/**/*'], {base: './client'})
         .pipe(gulp.dest('../public/dist'))
         .pipe(rev())
         .pipe(gulp.dest('../public/dist'))
         .pipe(rev.manifest('manifest.json',{
-            base: '../',
+            base: './',
             merge: true  // merge with the existing manifest if one exists
         }))
         .pipe(gulp.dest('../public/dist'))
