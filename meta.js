@@ -36,7 +36,7 @@ module.exports = {
         }
     },
     "filters":{
-        "__tests__/**/*": "test",
+        "client/__tests__/**/*": "test",
         "config/test.env.js": "test"
     },
     "completeMessage": "To get started:\n\n  cd {{destDirName}}\n  npm install\n  npm run dev\n  npm run gulp:dev\n\nDocumentation can be found at https://github.com/dwqs/react-koa"
