@@ -1,6 +1,21 @@
 # react-node
 A simple template Webpack 2 + React 15 + Koa 2 setup for projects.
 
+# Usage
+First, you should install [chare](https://github.com/dwqs/chare):
+
+```
+$ npm install chare -g
+```
+
+Then, use the following command to init your project:
+
+```
+$ chare init dwqs/react-koa your-project
+```
+
+You will get some easily questions, answer it and join it!
+
 # Documentation
 [React](https://facebook.github.io/react/): general information about how to work with React, not specific to this template.
 
