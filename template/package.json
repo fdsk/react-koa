@@ -11,7 +11,16 @@
     "dependencies": {
       "react": "^15.3.2",
       "react-dom": "^15.3.2"{{#router}},
-      "react-router": "^3.0.2"{{/router}}
+      "react-router": "^3.0.2",{{/router}}
+      "babel-polyfill": "^6.23.0",
+      "koa": "^2.0.0",
+      "koa-bodyparser": "^4.1.0",
+      "koa-compress": "^2.0.0",
+      "koa-logger": "^2.0.0",
+      "koa-router": "^7.1.0",
+      "koa-static": "^3.0.0",
+      "koa-swig": "^2.2.1",
+      "koa-json": "^2.0.0"
     },
     "devDependencies": {
       "autoprefixer": "^6.7.2",
