@@ -11,11 +11,13 @@ module.exports =  {
         env: require('./dev.env.js'),
         assetsRoot: path.resolve(__dirname, '../public/dist'),
         assetsPublicPath: '/',
-        port: 3000
+        clientPort: 3000,
+        serverPort: 9003
     },
     build:{
         env: require('./prod.env.js'),
         assetsRoot: path.resolve(__dirname, '../public/dist'),
         assetsPublicPath: '/',
+        serverPort: 9003
     }
 };
