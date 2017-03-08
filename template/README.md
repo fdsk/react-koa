@@ -6,11 +6,17 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:3000
+# start server
 npm run dev
+
+# serve with hot reload at localhost:3000
+npm run gulp:dev
 
 # build for production with minification
 npm run build
+
+# clean static resource
+npm run clean
 
 # run unit tests
 npm run test
