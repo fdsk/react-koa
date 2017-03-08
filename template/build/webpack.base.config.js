@@ -8,7 +8,6 @@ let path = require('path');
 let webpack = require('webpack');
 
 let vendor = ['react','react-dom'];
-let ReplaceAssets = require('./replaceAssets');
 
 module.exports = {
     module: {
@@ -45,7 +44,6 @@ module.exports = {
         ];
     },
     plugins:[
-        new ReplaceAssets(),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name:"vendor",

@@ -21,14 +21,14 @@ let browserIsOpen = false;
 
 gulp.task('assets', () =>
     gulp.src(['./images/**/*'], {base: './'})
-        .pipe(gulp.dest('../public/dist'))
+        .pipe(gulp.dest('../public/'))
         .pipe(rev())
-        .pipe(gulp.dest('../public/dist'))
+        .pipe(gulp.dest('../public/'))
         .pipe(rev.manifest('manifest.json',{
             base: './',
             merge: true  // merge with the existing manifest if one exists
         }))
-        .pipe(gulp.dest('../public/dist'))
+        .pipe(gulp.dest('../public/'))
 );
 
 // clean static resource
