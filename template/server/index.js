@@ -8,7 +8,7 @@ let path = require('path');
 let compress = require('koa-compress');
 let logger = require('koa-logger');
 let serve = require('koa-static');
-let koa = require('koa');
+let Koa = require('koa');
 let json = require('koa-json');
 let bodyParser = require('koa-bodyparser');
 let co = require('co');
@@ -18,7 +18,7 @@ let config = require('../config/index');
 let port = process.env.NODE_ENV != 'production' ? config.dev.serverPort : config.build.serverPort;
 let controller = require('./router');
 
-let app = koa();
+let app = new Koa();
 
 app.context.render = co.wrap(render({
     root: path.resolve(__dirname, './views'),
