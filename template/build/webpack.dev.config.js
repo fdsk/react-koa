@@ -43,7 +43,7 @@ devConfig.devServer = {
     historyApiFallback: true,
     colors: true,
     stats: 'normal',
-    contentBase: './public',
+    contentBase: '../public',
     publicPath: config.dev.assetsPublicPath
 };
 
@@ -51,7 +51,7 @@ module.exports = Object.assign({},devConfig,{
     entry: {
         app:[
             "webpack/hot/dev-server",
-            `webpack-dev-server/client?http://localhost:${config.dev.port}/`,
+            `webpack-dev-server/client?http://localhost:${config.dev.clientPort}/`,
             path.resolve(__dirname, '../client/page/index.js')
         ]
     },
