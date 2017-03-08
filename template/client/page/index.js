@@ -6,6 +6,9 @@
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+
+import 'babel-polyfill';
+
 {{#router}}
 import { Router, Route, browserHistory} from 'react-router';
 import Info from '@components/info';
