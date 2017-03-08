@@ -1,0 +1,53 @@
+{
+    "name": "{{name}}",
+    "version": "{{version}}",
+    "description": "{{description}}",
+    "author": "{{author}}",
+    "scripts": {
+      "dev": "NODE_ENV=development ./node_modules/.bin/gulp dev",
+      "build": "NODE_ENV=production ./node_modules/.bin/gulp --gulpfile ./gulpfile.build.js build"{{#test}},
+      "test": "jest"{{/test}}
+    },
+    "dependencies": {
+      "react": "^15.3.2",
+      "react-dom": "^15.3.2"{{#router}},
+      "react-router": "^3.0.2"{{/router}}
+    },
+    "devDependencies": {
+      "autoprefixer": "^6.7.2",
+      "precss": "^1.4.0",
+      "postcss-loader": "^1.2.2",
+      "babel-core": "^6.21.0",
+      "babel-loader": "^6.2.10",
+      "babel-plugin-transform-runtime": "^6.15.0",
+      "babel-preset-es2015": "^6.18.0",
+      "babel-preset-react": "^6.11.1",
+      "babel-preset-stage-2": "^6.18.0",
+      "babel-runtime": "^6.20.0",
+      "gulp": "^3.9.1",
+      "gulp-rev": "^7.1.2",
+      "gulp-util": "^3.0.8",
+      "del": "^2.2.2",
+      "chalk": "^1.1.3",
+      "opn": "^4.0.2",
+      "react-hot-loader": "^1.3.1",
+      "css-loader": "^0.26.1",
+      "style-loader": "^0.13.0",
+      "url-loader": "^0.5.7",
+      "file-loader": "^0.9.0",
+      "extract-text-webpack-plugin": "^1.0.1",
+      "cross-env": "^3.1.4",
+      "webpack": "^1.14.0",
+      "webpack-dev-server": "^1.16.2"{{#test}},
+      "react-addons-test-utils": "^15.3.2",
+      "babel-jest": "^17.0.2",
+      "enzyme": "^2.7.1",
+      "jest": "^18.1.0"{{/test}}
+    },
+    "engines": {
+      "node": ">= 7.6.0",
+      "npm": ">= 4.1.2"
+    }
+}
+
+
