@@ -39,7 +39,6 @@ prodConfig.module.rules.unshift({
 
 prodConfig.plugins = (prodConfig.plugins || []).concat([
     new ExtractTextPlugin("styles.css"),
-    new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
         'process.env': config.build.env
     }),
